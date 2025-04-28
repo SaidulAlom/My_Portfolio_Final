@@ -23,6 +23,18 @@ const Header = () => {
     { href: '#contact', label: 'Contact' },
   ];
 
+  // Close menu when clicking outside on mobile
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMenuOpen && !event.target.closest('.mobile-menu-container')) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMenuOpen]);
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 ${
@@ -64,7 +76,7 @@ const Header = () => {
             </button>
           </nav>
 
-          {/* Mobile menu button */}
+          {/* Mobile Navigation Button */}
           <div className="flex md:hidden items-center gap-4">
             <button
               onClick={toggleTheme}
@@ -91,23 +103,23 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4">
+        {/* Mobile Menu */}
+        <div className={`mobile-menu-container md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
+          <nav className="mt-4 pb-4">
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors font-medium py-2"
+                  className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors font-medium py-2 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
                 >
                   {link.label}
                 </a>
               ))}
             </div>
           </nav>
-        )}
+        </div>
       </div>
     </header>
   );
