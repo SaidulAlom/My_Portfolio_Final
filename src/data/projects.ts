@@ -24,7 +24,7 @@ export const projects: Project[] = [
     description: "Developed a full-stack job listing and application portal using React.js, Node.js, Express.js, and MongoDB.",
     image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     tags: ["React.js", "Node.js", "Express.js", "MongoDB"],
-    demoLink: "#",
+    demoLink: "https://jovial-crumble-052572.netlify.app/",
     githubLink: "https://github.com/SaidulAlom",
   },
   {
