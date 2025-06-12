@@ -42,8 +42,8 @@ export const projects: Project[] = [
     description: "JavaScript-based app fetching real-time weather data from an external API.",
     image: "https://images.pexels.com/photos/2448749/pexels-photo-2448749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     tags: ["JavaScript", "CSS", "Weather API"],
-    demoLink: "#",
-    githubLink: "https://github.com/SaidulAlom",
+    demoLink: "https://weather-app-gamma-eight-59.vercel.app/",
+    githubLink: "https://github.com/SaidulAlom/weather-app.git",
   },
   {
     id: 5,
