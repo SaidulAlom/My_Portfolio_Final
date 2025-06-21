@@ -1,95 +1,47 @@
 import { useState } from 'react';
 import { Send } from 'lucide-react';
-import emailjs from '@emailjs/browser';
-import { EMAILJS_CONFIG } from '../../config/emailjs';
 
-const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  
+const ContactFormFormspree = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
-  
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-  
-  const handleSubmit = async (e: React.FormEvent) => {
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
     setIsSubmitting(true);
-    
-    // Validate form
-    if (!formData.name || !formData.email || !formData.message) {
-      setError('Please fill in all fields');
-      setIsSubmitting(false);
-      return;
-    }
-    
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      setError('Please enter a valid email address');
-      setIsSubmitting(false);
-      return;
-    }
+
+    const formData = new FormData(e.currentTarget);
     
     try {
-      console.log('Sending email with EmailJS...');
-      console.log('Service ID:', EMAILJS_CONFIG.SERVICE_ID);
-      console.log('Template ID:', EMAILJS_CONFIG.TEMPLATE_ID);
-      console.log('Public Key:', EMAILJS_CONFIG.PUBLIC_KEY);
-      
-      // Send email using EmailJS
-      const result = await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_name: 'Saidul Alom',
-        },
-        EMAILJS_CONFIG.PUBLIC_KEY
-      );
-      
-      console.log('EmailJS Result:', result);
-      
-      if (result.status === 200) {
+      // Replace 'your-formspree-endpoint' with your actual Formspree endpoint
+      const response = await fetch('https://formspree.io/f/your-formspree-endpoint', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
         setIsSubmitted(true);
-        setFormData({ name: '', email: '', message: '' });
+        e.currentTarget.reset();
         
         // Reset success message after 5 seconds
         setTimeout(() => {
           setIsSubmitted(false);
         }, 5000);
       } else {
-        setError(`Failed to send message. Status: ${result.status}`);
+        setError('Failed to send message. Please try again.');
       }
-    } catch (error: any) {
-      console.error('EmailJS Error:', error);
-      
-      // More specific error messages
-      if (error.text) {
-        setError(`EmailJS Error: ${error.text}`);
-      } else if (error.message) {
-        setError(`Error: ${error.message}`);
-      } else {
-        setError('Failed to send message. Please check your EmailJS configuration.');
-      }
+    } catch (error) {
+      console.error('Formspree Error:', error);
+      setError('Failed to send message. Please try again later.');
     } finally {
       setIsSubmitting(false);
     }
   };
-  
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {error && (
@@ -112,8 +64,6 @@ const ContactForm = () => {
           type="text"
           id="name"
           name="name"
-          value={formData.name}
-          onChange={handleChange}
           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
           placeholder="Your name"
           required
@@ -128,8 +78,6 @@ const ContactForm = () => {
           type="email"
           id="email"
           name="email"
-          value={formData.email}
-          onChange={handleChange}
           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
           placeholder="Your email"
           required
@@ -144,8 +92,6 @@ const ContactForm = () => {
           id="message"
           name="message"
           rows={5}
-          value={formData.message}
-          onChange={handleChange}
           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white resize-none"
           placeholder="Your message"
           required
@@ -176,4 +122,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default ContactFormFormspree; 

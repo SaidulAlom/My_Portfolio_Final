@@ -7,11 +7,16 @@ import Skills from './components/sections/Skills';
 import Contact from './components/sections/Contact';
 import Footer from './components/layout/Footer';
 import { ThemeProvider } from './context/ThemeContext';
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from './config/emailjs';
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    // Initialize EmailJS
+    emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+    
     setTimeout(() => {
       setIsLoaded(true);
     }, 100);
