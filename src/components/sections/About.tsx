@@ -31,16 +31,16 @@ const About = () => {
                 {/* Text Column */}
                 <div className="md:w-2/3">
                   <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                    Hello, I'm <span className="font-semibold text-blue-600 dark:text-blue-400">Saidul Alom</span> — a dedicated Full Stack Web Developer pursuing my B.Tech in Computer Science and Engineering at Dhemaji Engineering College (graduating in 2025).
+                    Hi, I'm <span className="font-semibold text-blue-600 dark:text-blue-400">Saidul Alom</span> — a Full Stack Web Developer with a passion for building high-performance web applications using the latest tools and technologies including <span className="font-semibold">Next.js, React, Node.js, Express, MongoDB, TypeScript, and Tailwind CSS</span>.
                   </p>
                   <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                    I craft fast, responsive, and modern web applications using <span className="font-semibold">React.js, Next.js, Node.js, Express.js, and MongoDB</span>, with a focus on delivering seamless user experiences.
+                    I combine frontend precision with powerful backend logic, and I often integrate AI tools like ChatGPT and Framer AI to accelerate development, improve UX, and ship faster.
                   </p>
                   <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                    My training includes a Full Stack Web Development course at <span className="font-semibold">NIELIT</span> and hands-on experience as a Web Development Intern at <span className="font-semibold">IOCL Digboi</span>.
+                    I’m currently pursuing my B.Tech in Computer Science and Engineering at <span className="font-semibold">Dhemaji Engineering College</span> (Graduating 2025). I’ve completed a Full Stack Web Development course at <span className="font-semibold">NIELIT</span> and gained real-world experience during my internship at <span className="font-semibold">IOCL Digboi</span>, where I contributed to internal web tools and backend logic.
                   </p>
                   <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Beyond coding, I’m passionate about event organization, travel, and exploring cutting-edge technologies, particularly AI-integrated web solutions.
+                    Whether it's building an e-commerce store, a dynamic job portal, a portfolio, or an admin dashboard, I take pride in delivering scalable, responsive, and client-focused solutions. I'm open to freelance, remote, and collaborative international opportunities. Let’s build something great together!
                   </p>
                 </div>
               </div>
@@ -90,9 +90,15 @@ const About = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Download Resume
+                  View My CV (PDF)
                 </a>
               </div>
+
+              {/* CTA */}
+              <p className="text-center mt-10 text-lg text-gray-800 dark:text-gray-200">
+                Ready to build something awesome together?{' '}
+                <a href="#contact" className="text-blue-600 dark:text-blue-400 font-semibold underline">Let’s connect</a>.
+              </p>
             </div>
           </div>
         </div>
