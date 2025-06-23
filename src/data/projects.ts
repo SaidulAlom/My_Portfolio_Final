@@ -29,15 +29,6 @@ export const projects: Project[] = [
   },
   {
     id: 3,
-    title: "E-commerce Website",
-    description: "Created an online shopping platform with Next.js and MongoDB, featuring authentication and dynamic product pages.",
-    image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    tags: ["Next.js", "MongoDB", "Stripe", "TailwindCSS"],
-    demoLink: "#",
-    githubLink: "https://github.com/SaidulAlom",
-  },
-  {
-    id: 4,
     title: "Weather App",
     description: "JavaScript-based app fetching real-time weather data from an external API.",
     image: "https://images.pexels.com/photos/2448749/pexels-photo-2448749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -46,12 +37,12 @@ export const projects: Project[] = [
     githubLink: "https://github.com/SaidulAlom/weather-app.git",
   },
   {
-    id: 5,
-    title: "Mini Projects",
-    description: "Calculator and Digital Clock built using JavaScript and DOM manipulation.",
-    image: "https://images.pexels.com/photos/3760529/pexels-photo-3760529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    tags: ["JavaScript", "HTML", "CSS", "DOM"],
-    demoLink: "#",
-    githubLink: "https://github.com/SaidulAlom",
-  }
+    id: 4,
+    title: "FitFlow Gym Frontend",
+    description: "Developed a responsive frontend for FitFlow Gym, showcasing fitness programs, trainers, and membership plans using React.js and TailwindCSS.",
+    image: "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    tags: ["React.js", "TailwindCSS", "JavaScript"],
+    demoLink: "https://fitflow-gym.netlify.app/",
+    githubLink: "https://github.com/SaidulAlom/FitFlow-Gym-Website-.git",
+  },
 ];
